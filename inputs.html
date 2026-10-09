@@ -257,6 +257,30 @@
     </div>
   </section>
 
+  <section id="toggle-switch" class="scroll-mt-24 border-b border-ink/10 py-10 first:pt-0 last:border-0 dark:border-white/10">
+    <h2 class="text-xl font-bold tracking-tight">Toggle switch</h2>
+    <p class="mt-2 text-sm leading-relaxed text-ink/70 dark:text-white/70">Use a native checkbox with <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">role="switch"</code> for an on/off choice. Keep the checkbox focusable and give it a visible label. The <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">peer-checked:</code> classes move the thumb and change the track color without JavaScript.</p>
+    <div class="not-prose mt-4 overflow-hidden rounded-xl border border-ink/10 dark:border-white/10">
+      <div class="flex flex-wrap items-center justify-center gap-4 bg-white p-6 dark:bg-white/[0.03]">
+        <label class="relative flex w-fit cursor-pointer items-center gap-3 text-sm font-medium">
+          <input type="checkbox" name="email_copy" role="switch" class="peer sr-only">
+          <span aria-hidden="true" class="h-6 w-11 shrink-0 rounded-full bg-gray-300 transition-colors peer-checked:bg-brand-500 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-500 peer-focus-visible:ring-offset-2 dark:bg-gray-600 dark:peer-checked:bg-brand-500 dark:peer-focus-visible:ring-offset-ink motion-reduce:transition-none"></span>
+          <span aria-hidden="true" class="pointer-events-none absolute left-0.5 top-0.5 size-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5 motion-reduce:transition-none"></span>
+          <span>Email me a copy</span>
+        </label>
+      </div>
+      <div class="code-block relative">
+        <button type="button" class="copy-btn absolute right-3 top-3 rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium text-white hover:bg-white/20">Copy</button>
+        <pre class="!m-0 !rounded-none"><code class="language-markup">&lt;label class=&quot;relative flex w-fit cursor-pointer items-center gap-3 text-sm font-medium&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; name=&quot;email_copy&quot; role=&quot;switch&quot; class=&quot;peer sr-only&quot;&gt;
+  &lt;span aria-hidden=&quot;true&quot; class=&quot;h-6 w-11 shrink-0 rounded-full bg-gray-300 transition-colors peer-checked:bg-brand-500 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-500 peer-focus-visible:ring-offset-2 dark:bg-gray-600 dark:peer-checked:bg-brand-500 dark:peer-focus-visible:ring-offset-ink motion-reduce:transition-none&quot;&gt;&lt;/span&gt;
+  &lt;span aria-hidden=&quot;true&quot; class=&quot;pointer-events-none absolute left-0.5 top-0.5 size-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5 motion-reduce:transition-none&quot;&gt;&lt;/span&gt;
+  &lt;span&gt;Email me a copy&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
   <section id="checkbox-group" class="scroll-mt-24 border-b border-ink/10 py-10 first:pt-0 last:border-0 dark:border-white/10">
     <h2 class="text-xl font-bold tracking-tight">Checkbox group</h2>
     <p class="mt-2 text-sm leading-relaxed text-ink/70 dark:text-white/70"><code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">text-brand-500</code> on a checkbox/radio input sets its own check/dot color, since browsers render native checkbox and radio marks using <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">currentColor</code>/<code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">accent-color</code> under the hood; Tailwind's <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">text-*</code> utilities are what set that.</p>
