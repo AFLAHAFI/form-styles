@@ -218,6 +218,98 @@
     </div>
   </section>
 
+  <section id="textarea-character-counter" class="scroll-mt-24 border-b border-ink/10 py-10 first:pt-0 last:border-0 dark:border-white/10">
+    <h2 class="text-xl font-bold tracking-tight">Textarea with character counter</h2>
+    <p class="mt-2 text-sm leading-relaxed text-ink/70 dark:text-white/70">Set a real character limit with <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">maxlength</code> and connect the counter to the textarea with <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">aria-describedby</code>. A small input listener updates the count as you type.</p>
+    <div class="not-prose mt-4 overflow-hidden rounded-xl border border-ink/10 dark:border-white/10">
+      <div class="flex flex-wrap items-center justify-center gap-4 bg-white p-6 dark:bg-white/[0.03]">
+        <div class="flex w-full max-w-md flex-col gap-1">
+          <label for="message-textarea" class="text-sm font-medium">Message</label>
+          <textarea id="message-textarea" name="message" rows="4" maxlength="500"
+                    aria-describedby="message-character-count" placeholder="Write your message..."
+                    class="w-full resize-y rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600 dark:bg-white/5 dark:text-paper dark:placeholder:text-white/40"></textarea>
+          <p id="message-character-count" class="text-right text-xs text-ink/60 dark:text-white/60">0 / 500 characters</p>
+        </div>
+        <script>
+          const messageField = document.getElementById('message-textarea')
+          const messageCount = document.getElementById('message-character-count')
+          const updateMessageCount = () => {
+            messageCount.textContent = messageField.value.length + ' / ' + messageField.maxLength + ' characters'
+          }
+          messageField.addEventListener('input', updateMessageCount)
+          updateMessageCount()
+        </script>
+      </div>
+      <div class="code-block relative">
+        <button type="button" class="copy-btn absolute right-3 top-3 rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium text-white hover:bg-white/20">Copy</button>
+        <pre class="!m-0 !rounded-none"><code class="language-markup">&lt;div class=&quot;flex w-full max-w-md flex-col gap-1&quot;&gt;
+  &lt;label for=&quot;message-textarea&quot; class=&quot;text-sm font-medium&quot;&gt;Message&lt;/label&gt;
+  &lt;textarea id=&quot;message-textarea&quot; name=&quot;message&quot; rows=&quot;4&quot; maxlength=&quot;500&quot;
+            aria-describedby=&quot;message-character-count&quot; placeholder=&quot;Write your message...&quot;
+            class=&quot;w-full resize-y rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 dark:border-gray-600 dark:bg-white/5 dark:text-paper dark:placeholder:text-white/40&quot;&gt;&lt;/textarea&gt;
+  &lt;p id=&quot;message-character-count&quot; class=&quot;text-right text-xs text-ink/60 dark:text-white/60&quot;&gt;0 / 500 characters&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const messageField = document.getElementById(&#x27;message-textarea&#x27;)
+  const messageCount = document.getElementById(&#x27;message-character-count&#x27;)
+  const updateMessageCount = () =&gt; {
+    messageCount.textContent = messageField.value.length + &#x27; / &#x27; + messageField.maxLength + &#x27; characters&#x27;
+  }
+  messageField.addEventListener(&#x27;input&#x27;, updateMessageCount)
+  updateMessageCount()
+&lt;/script&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="range-slider" class="scroll-mt-24 border-b border-ink/10 py-10 first:pt-0 last:border-0 dark:border-white/10">
+    <h2 class="text-xl font-bold tracking-tight">Range slider</h2>
+    <p class="mt-2 text-sm leading-relaxed text-ink/70 dark:text-white/70">A native range input works with a mouse, touch, or the arrow keys. Style its track and thumb with Tailwind CSS, then update the output as the value changes. Try the site's theme toggle to compare light and dark states.</p>
+    <div class="not-prose mt-4 overflow-hidden rounded-xl border border-ink/10 dark:border-white/10">
+      <div class="flex flex-wrap items-center justify-center gap-4 bg-white p-6 dark:bg-white/[0.03]">
+        <div class="flex w-full max-w-md flex-col gap-3">
+          <div class="flex items-center justify-between gap-4">
+            <label for="rating-slider" class="text-sm font-medium">Satisfaction rating</label>
+            <output id="rating-slider-value" for="rating-slider" class="rounded-md bg-brand-50 px-2 py-1 text-sm font-semibold text-brand-600 dark:bg-brand-500/20 dark:text-paper">5 / 10</output>
+          </div>
+          <input id="rating-slider" name="rating" type="range" min="1" max="10" step="1" value="5" aria-describedby="rating-hint"
+                 class="h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 focus-visible:ring-offset-4 dark:bg-gray-600 dark:focus-visible:ring-offset-ink [&::-webkit-slider-thumb]:size-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-brand-600 [&::-webkit-slider-thumb]:shadow-md dark:[&::-webkit-slider-thumb]:border-ink dark:[&::-webkit-slider-thumb]:bg-brand-500 [&::-moz-range-track]:h-2 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-600 [&::-moz-range-thumb]:size-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-brand-600 [&::-moz-range-thumb]:shadow-md dark:[&::-moz-range-thumb]:border-ink dark:[&::-moz-range-thumb]:bg-brand-500">
+          <p id="rating-hint" class="text-xs text-ink/60 dark:text-white/60">Use the arrow keys to adjust the rating.</p>
+        </div>
+        <script>
+          const ratingSlider = document.getElementById('rating-slider')
+          const ratingValue = document.getElementById('rating-slider-value')
+          const updateRatingValue = () => {
+            ratingValue.textContent = ratingSlider.value + ' / ' + ratingSlider.max
+          }
+          ratingSlider.addEventListener('input', updateRatingValue)
+          updateRatingValue()
+        </script>
+      </div>
+      <div class="code-block relative">
+        <button type="button" class="copy-btn absolute right-3 top-3 rounded border border-white/20 bg-white/10 px-2 py-1 text-xs font-medium text-white hover:bg-white/20">Copy</button>
+        <pre class="!m-0 !rounded-none"><code class="language-markup">&lt;div class=&quot;flex w-full max-w-md flex-col gap-3&quot;&gt;
+  &lt;div class=&quot;flex items-center justify-between gap-4&quot;&gt;
+    &lt;label for=&quot;rating-slider&quot; class=&quot;text-sm font-medium&quot;&gt;Satisfaction rating&lt;/label&gt;
+    &lt;output id=&quot;rating-slider-value&quot; for=&quot;rating-slider&quot; class=&quot;rounded-md bg-brand-50 px-2 py-1 text-sm font-semibold text-brand-600 dark:bg-brand-500/20 dark:text-paper&quot;&gt;5 / 10&lt;/output&gt;
+  &lt;/div&gt;
+  &lt;input id=&quot;rating-slider&quot; name=&quot;rating&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;10&quot; step=&quot;1&quot; value=&quot;5&quot; aria-describedby=&quot;rating-hint&quot;
+         class=&quot;h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 focus-visible:ring-offset-4 dark:bg-gray-600 dark:focus-visible:ring-offset-ink [&amp;::-webkit-slider-thumb]:size-5 [&amp;::-webkit-slider-thumb]:appearance-none [&amp;::-webkit-slider-thumb]:rounded-full [&amp;::-webkit-slider-thumb]:border-2 [&amp;::-webkit-slider-thumb]:border-white [&amp;::-webkit-slider-thumb]:bg-brand-600 [&amp;::-webkit-slider-thumb]:shadow-md dark:[&amp;::-webkit-slider-thumb]:border-ink dark:[&amp;::-webkit-slider-thumb]:bg-brand-500 [&amp;::-moz-range-track]:h-2 [&amp;::-moz-range-track]:rounded-full [&amp;::-moz-range-track]:bg-gray-200 dark:[&amp;::-moz-range-track]:bg-gray-600 [&amp;::-moz-range-thumb]:size-5 [&amp;::-moz-range-thumb]:rounded-full [&amp;::-moz-range-thumb]:border-2 [&amp;::-moz-range-thumb]:border-white [&amp;::-moz-range-thumb]:bg-brand-600 [&amp;::-moz-range-thumb]:shadow-md dark:[&amp;::-moz-range-thumb]:border-ink dark:[&amp;::-moz-range-thumb]:bg-brand-500&quot;&gt;
+  &lt;p id=&quot;rating-hint&quot; class=&quot;text-xs text-ink/60 dark:text-white/60&quot;&gt;Use the arrow keys to adjust the rating.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const ratingSlider = document.getElementById(&#x27;rating-slider&#x27;)
+  const ratingValue = document.getElementById(&#x27;rating-slider-value&#x27;)
+  const updateRatingValue = () =&gt; {
+    ratingValue.textContent = ratingSlider.value + &#x27; / &#x27; + ratingSlider.max
+  }
+  ratingSlider.addEventListener(&#x27;input&#x27;, updateRatingValue)
+  updateRatingValue()
+&lt;/script&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
   <section id="radio-group-segmented-control-look" class="scroll-mt-24 border-b border-ink/10 py-10 first:pt-0 last:border-0 dark:border-white/10">
     <h2 class="text-xl font-bold tracking-tight">Radio group (segmented control look)</h2>
     <p class="mt-2 text-sm leading-relaxed text-ink/70 dark:text-white/70">A styled radio group reads as a set of buttons instead of the browser's default small circles, using <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">peer</code> and <code class="rounded bg-ink/5 px-1 py-0.5 text-[0.85em] dark:bg-white/10">:has()</code> so no JavaScript is needed to toggle the selected look:</p>
